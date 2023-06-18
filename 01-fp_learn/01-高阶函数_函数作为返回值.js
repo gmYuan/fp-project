@@ -12,8 +12,6 @@
 
 // makeFn()()
 
-
-
 // once
 function once (fn) {
   let done = false
