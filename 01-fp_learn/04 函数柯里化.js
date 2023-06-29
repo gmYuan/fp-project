@@ -39,12 +39,32 @@ let checkAge20 = checkAge(20)
 
 // 例2  lodash 中的 curry 基本使用 
 const _ = require('lodash')
-
 function getSum (a, b, c) {
   return a + b + c
 }
 
 const curried = _.curry(getSum)
-console.log(curried(1, 2, 3))
-console.log(curried(1)(2, 3))
-console.log(curried(1, 2)(3))
+// console.log(curried(1, 2, 3))
+// console.log(curried(1)(2, 3))
+// console.log(curried(1, 2)(3))
+
+
+// 例3 lodash中的 curry 基本使用2
+// ''.match(/\s+/g)
+// ''.match(/\d+/g)
+
+const match = _.curry(function (reg, str) {
+  return str.match(reg)
+})
+const haveSpace = match(/\s+/g)
+const haveNumber = match(/\d+/g)
+
+const filter = _.curry(function (func, array) {
+  return array.filter(func)
+})
+
+// 使用方法1
+console.log(filter(haveSpace, ['John Connor', 'John_Donne']))
+// 使用2
+const findSpace = filter(haveSpace)
+console.log(findSpace(['John Connor', 'John_Donne']))
