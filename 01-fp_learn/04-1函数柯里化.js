@@ -1,7 +1,12 @@
 /**
-1 柯里化 (Currying)：
+1 柯里化 (Currying)含义：
   - 当一个函数有多个参数的时候，先传递一部分参数调用它（这部分参数以后永远不变）
   - 然后返回一个新的函数接收剩余的参数，返回结果
+
+2 柯里化作用
+  - 柯里化可以让我们给一个函数传递较少的参数，得到一个已经记住了某些固定参数的新函数
+  - 这是一种对函数参数的'缓存'，让函数变的更灵活，让函数的粒度更小；
+    它可以把多元函数转换成 一元函数，可以组合使用函数，产生强大的功能
 */
 
 
@@ -68,3 +73,5 @@ console.log(filter(haveSpace, ['John Connor', 'John_Donne']))
 // 使用2
 const findSpace = filter(haveSpace)
 console.log(findSpace(['John Connor', 'John_Donne']))
+
+
