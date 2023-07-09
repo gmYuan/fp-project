@@ -29,10 +29,22 @@ console.log('last--', last([1, 2, 3, 4]))
 
 
 // 2 lodash中的函数组合的方法==>  _.flowRight()
-const _ = require('lodash')
-const reverse2 = arr => arr.reverse()
-const first2 = arr => arr[0]
-const toUpper = s => s.toUpperCase()
+// const _ = require('lodash')
+// const reverse2 = arr => arr.reverse()
+// const first2 = arr => arr[0]
+// const toUpper = s => s.toUpperCase()
 
-const f = _.flowRight(toUpper, first2, reverse2)
-console.log('flowRight--', f(['one', 'two', 'three']))
+// const f = _.flowRight(toUpper, first2, reverse2)
+// console.log('flowRight--', f(['one', 'two', 'three']))
+
+
+// 3 模拟实现_.flowRight方法
+const compose3 = (...fns) => 
+  (value) => fns.reverse().reduce((pre, fn) => fn(pre), value)
+
+const reverse3 = arr => arr.reverse()
+const first3 = arr => arr[0]
+const toUpper3 = s => s.toUpperCase()
+
+const f = compose3(toUpper3, first3, reverse3)
+console.log('模拟compose--', f(['one', 'two', 'three']))
