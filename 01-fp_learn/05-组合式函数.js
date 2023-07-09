@@ -48,3 +48,19 @@ const toUpper3 = s => s.toUpperCase()
 
 const f = compose3(toUpper3, first3, reverse3)
 console.log('模拟compose--', f(['one', 'two', 'three']))
+
+
+/* 4 函数的组合要满足结合律 (associativity)：
+let f = compose(f, g, h)
+
+// true
+let associative = compose( compose(f, g),  h) == compose(f, compose(g, h))
+*/
+
+const _ = require('lodash')
+// const f = _.flowRight(_.toUpper, _.first, _.reverse)
+
+// const f4 = _.flowRight(_.flowRight(_.toUpper, _.first), _.reverse)
+const f4 = _.flowRight(_.toUpper, _.flowRight(_.first, _.reverse))
+console.log('函数组合结合律--', f4(['one', 'two', 'three']))
+// => THREE
